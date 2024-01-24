@@ -1,8 +1,8 @@
-package br.com.google.model.moviment.drive;
+package br.com.google.marsrover.drive;
 
 import java.util.List;
 
-import br.com.google.model.Position;
+import br.com.google.marsrover.Position;
 
 public abstract class Drive {
 

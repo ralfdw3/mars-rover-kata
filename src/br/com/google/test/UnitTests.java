@@ -6,10 +6,10 @@ import java.util.List;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
-import br.com.google.model.CardinalPoints;
-import br.com.google.model.Position;
-import br.com.google.model.moviment.Move;
-import br.com.google.model.moviment.Obstacle;
+import br.com.google.marsrover.CardinalPoints;
+import br.com.google.marsrover.Position;
+import br.com.google.marsrover.Move;
+import br.com.google.obstacle.Obstacle;
 
 public class UnitTests {
 

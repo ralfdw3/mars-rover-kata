@@ -1,6 +1,6 @@
-package br.com.google.model.moviment.drive;
+package br.com.google.marsrover.drive;
 
-import br.com.google.model.Position;
+import br.com.google.marsrover.Position;
 
 public class DontDrive extends Drive{
 	

@@ -1,6 +1,6 @@
-package br.com.google.model.moviment.rotate;
+package br.com.google.marsrover.rotate;
 
-import br.com.google.model.Position;
+import br.com.google.marsrover.Position;
 
 public abstract class Rotate {
 	

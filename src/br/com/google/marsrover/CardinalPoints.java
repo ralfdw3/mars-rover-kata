@@ -1,4 +1,4 @@
-package br.com.google.model;
+package br.com.google.marsrover;
 
 public enum CardinalPoints {
 

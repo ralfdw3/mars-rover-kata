@@ -1,7 +1,7 @@
-package br.com.google.model.moviment.drive;
+package br.com.google.marsrover.drive;
 
-import br.com.google.model.CardinalPoints;
-import br.com.google.model.Position;
+import br.com.google.marsrover.CardinalPoints;
+import br.com.google.marsrover.Position;
 
 public class DriveNorth extends Drive {
 

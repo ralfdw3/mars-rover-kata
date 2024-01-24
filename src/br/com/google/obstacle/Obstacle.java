@@ -1,8 +1,8 @@
-package br.com.google.model.moviment;
+package br.com.google.obstacle;
 
-import br.com.google.model.Position;
+import br.com.google.marsrover.Position;
 
-public class Obstacle extends Position{
+public class Obstacle extends Position {
 	
 	private Position obstacle;
 	
