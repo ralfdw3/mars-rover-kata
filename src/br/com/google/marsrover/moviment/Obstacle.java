@@ -1,15 +1,20 @@
 package br.com.google.marsrover.moviment;
 
-public class Obstacle extends Position {
+public class Obstacle {
 
-    private String description;
+    private final String description;
+    private final Position position;
 
     public String getDescription() {
         return description;
     }
 
+    public Position getPosition() {
+        return position;
+    }
+
     public Obstacle(Position position, String description) {
-        super(position.getCardinalPoint(), position.getX(), position.getY());
+        this.position = position;
         this.description = description;
     }
 }

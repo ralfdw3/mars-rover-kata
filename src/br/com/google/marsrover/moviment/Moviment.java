@@ -34,7 +34,7 @@ public class Moviment {
     }
 
     private static boolean existsObstacleWhereTheRoverWillMove(Position newPosition, Obstacle o) {
-        return Objects.equals(o.getX(), newPosition.getX()) && Objects.equals(o.getY(), newPosition.getY());
+        return Objects.equals(o.getPosition().getX(), newPosition.getX()) && Objects.equals(o.getPosition().getY(), newPosition.getY());
     }
 
     private static Position moveUpwards(Position position) {
