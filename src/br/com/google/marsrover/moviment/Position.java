@@ -42,9 +42,6 @@ public class Position {
         this.y = y;
     }
 
-    public Position() {
-    }
-
     public static PositionBuilder builder() {
         return new PositionBuilder();
     }

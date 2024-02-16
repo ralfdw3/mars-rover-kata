@@ -9,7 +9,7 @@ public class Moviment {
     public static final int GRID_LIMIT = 10;
     public static final int ADD_ONE_GRID_POSITION = 1;
 
-    public Position moveRover(Position position, List<Obstacle> obstacles) {
+    public void moveRover(Position position, List<Obstacle> obstacles) {
         Position newPosition;
 
         switch (position.getCardinalPoint()) {
@@ -20,7 +20,6 @@ public class Moviment {
             default -> throw new RuntimeException("Rover may be stuck :)");
         }
         checkForObstacles(newPosition, obstacles);
-        return newPosition;
     }
 
     private void checkForObstacles(Position newPosition, List<Obstacle> obstacles) {
@@ -29,12 +28,12 @@ public class Moviment {
                 .findFirst();
 
         if (obstacle.isPresent()) {
-            throw new RuntimeException("Unable to move because there is and obstacle: " + obstacle.get().getDescription());
+            throw new RuntimeException("Unable to move because there is and obstacle: " + obstacle.get().description());
         }
     }
 
     private static boolean existsObstacleWhereTheRoverWillMove(Position newPosition, Obstacle o) {
-        return Objects.equals(o.getPosition().getX(), newPosition.getX()) && Objects.equals(o.getPosition().getY(), newPosition.getY());
+        return Objects.equals(o.position().getX(), newPosition.getX()) && Objects.equals(o.position().getY(), newPosition.getY());
     }
 
     private static Position moveUpwards(Position position) {
@@ -69,7 +68,7 @@ public class Moviment {
         return position;
     }
 
-    public Position rotateToRight(Position position) {
+    public void rotateToRight(Position position) {
 
         switch (position.getCardinalPoint()) {
             case N -> position.setCardinalPoint(CardinalPoints.E);
@@ -78,11 +77,9 @@ public class Moviment {
             case W -> position.setCardinalPoint(CardinalPoints.N);
             default -> throw new RuntimeException("Couldnt rotate the rover to the right");
         }
-
-        return position;
     }
 
-    public Position rotateToLeft(Position position) {
+    public void rotateToLeft(Position position) {
         switch (position.getCardinalPoint()) {
             case N -> position.setCardinalPoint(CardinalPoints.W);
             case E -> position.setCardinalPoint(CardinalPoints.N);
@@ -90,7 +87,5 @@ public class Moviment {
             case W -> position.setCardinalPoint(CardinalPoints.S);
             default -> throw new RuntimeException("Couldnt rotate the rover to the left");
         }
-
-        return position;
     }
 }
