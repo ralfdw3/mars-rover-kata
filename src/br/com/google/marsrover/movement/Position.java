@@ -1,4 +1,4 @@
-package br.com.google.marsrover.moviment;
+package br.com.google.marsrover.movement;
 
 import java.util.Objects;
 

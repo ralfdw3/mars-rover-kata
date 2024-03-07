@@ -1,10 +1,10 @@
-package br.com.google.marsrover.moviment;
+package br.com.google.marsrover.movement;
 
 import java.util.List;
 
 public class CommandRunner {
 
-    private final Moviment moviment = new Moviment();
+    private final Movement movement = new Movement();
 
     public String runCommands(Position position, List<Obstacle> obstacles, String commands) {
         List<Character> commandList = commands.chars()
@@ -13,9 +13,9 @@ public class CommandRunner {
 
         for (char command : commandList) {
             switch (command) {
-                case 'R' -> moviment.rotateToRight(position);
-                case 'L' -> moviment.rotateToLeft(position);
-                case 'M' -> moviment.moveRover(position, obstacles);
+                case 'R' -> movement.rotateToRight(position);
+                case 'L' -> movement.rotateToLeft(position);
+                case 'M' -> movement.moveRover(position, obstacles);
             }
         }
         return position.printPosition();

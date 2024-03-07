@@ -1,8 +1,8 @@
 package br.com.google.tests;
 
-import br.com.google.marsrover.moviment.CardinalPoints;
-import br.com.google.marsrover.moviment.Obstacle;
-import br.com.google.marsrover.moviment.Position;
+import br.com.google.marsrover.movement.CardinalPoints;
+import br.com.google.marsrover.movement.Obstacle;
+import br.com.google.marsrover.movement.Position;
 
 import java.util.List;
 

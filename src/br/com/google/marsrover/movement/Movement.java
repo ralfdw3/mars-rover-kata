@@ -1,10 +1,10 @@
-package br.com.google.marsrover.moviment;
+package br.com.google.marsrover.movement;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-public class Moviment {
+public class Movement {
 
     public static final int GRID_LIMIT = 10;
     public static final int ADD_ONE_GRID_POSITION = 1;

@@ -1,6 +1,6 @@
 package br.com.google.tests;
 
-import br.com.google.marsrover.moviment.CommandRunner;
+import br.com.google.marsrover.movement.CommandRunner;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
