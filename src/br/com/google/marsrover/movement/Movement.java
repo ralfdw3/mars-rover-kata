@@ -7,24 +7,53 @@ import java.util.Optional;
 public class Movement {
 
     public static final int GRID_LIMIT = 10;
-    public static final int ADD_ONE_GRID_POSITION = 1;
+    public static final int ONE_GRID_POSITION = 1;
 
     public void moveRover(Position position, List<Obstacle> obstacles) {
-        Position newPosition;
-
         switch (position.getCardinalPoint()) {
-            case N -> newPosition = moveUpwards(position);
-            case E -> newPosition = moveRight(position);
-            case S -> newPosition = moveDownwards(position);
-            case W -> newPosition = moveLeft(position);
+            case N -> moveUpwards(position, obstacles);
+            case E -> moveRight(position, obstacles);
+            case S -> moveDownwards(position, obstacles);
+            case W -> moveLeft(position, obstacles);
             default -> throw new RuntimeException("Rover may be stuck :)");
         }
-        checkForObstacles(newPosition, obstacles);
     }
 
-    private void checkForObstacles(Position newPosition, List<Obstacle> obstacles) {
+    private static void moveUpwards(Position position, List<Obstacle> obstacles) {
+        checkForObstacles(position, obstacles);
+
+        if (position.getY() < GRID_LIMIT) {
+            position.setY(position.getY() + ONE_GRID_POSITION);
+        }
+    }
+
+    private static void moveRight(Position position, List<Obstacle> obstacles) {
+        checkForObstacles(position, obstacles);
+
+        if (position.getX() < GRID_LIMIT) {
+            position.setX(position.getX() + ONE_GRID_POSITION);
+        }
+    }
+
+    private static void moveDownwards(Position position, List<Obstacle> obstacles) {
+        checkForObstacles(position, obstacles);
+
+        if (position.getY() < GRID_LIMIT) {
+            position.setY(position.getY() - ONE_GRID_POSITION);
+        }
+    }
+
+    private static void moveLeft(Position position, List<Obstacle> obstacles) {
+        checkForObstacles(position, obstacles);
+
+        if (position.getX() < GRID_LIMIT) {
+            position.setX(position.getX() - ONE_GRID_POSITION);
+        }
+    }
+
+    private static void checkForObstacles(Position position, List<Obstacle> obstacles) {
         Optional<Obstacle> obstacle = obstacles.stream()
-                .filter(o -> existsObstacleWhereTheRoverWillMove(newPosition, o))
+                .filter(o -> existsObstacleWhereTheRoverWillMove(position, o))
                 .findFirst();
 
         if (obstacle.isPresent()) {
@@ -32,40 +61,15 @@ public class Movement {
         }
     }
 
-    private static boolean existsObstacleWhereTheRoverWillMove(Position newPosition, Obstacle o) {
-        return Objects.equals(o.position().getX(), newPosition.getX()) && Objects.equals(o.position().getY(), newPosition.getY());
-    }
-
-    private static Position moveUpwards(Position position) {
-        if (position.getY() < GRID_LIMIT) {
-            position.setY(position.getY() + ADD_ONE_GRID_POSITION);
-            return position;
+    private static boolean existsObstacleWhereTheRoverWillMove(Position position, Obstacle obstacle) {
+        switch (position.getCardinalPoint()) {
+            case N -> position.setY(position.getY() + ONE_GRID_POSITION);
+            case E -> position.setX(position.getX() + ONE_GRID_POSITION);
+            case S -> position.setY(position.getY() - ONE_GRID_POSITION);
+            case W -> position.setX(position.getX() - ONE_GRID_POSITION);
         }
-        return position;
-    }
 
-    private static Position moveRight(Position position) {
-        if (position.getX() < GRID_LIMIT) {
-            position.setX(position.getX() + ADD_ONE_GRID_POSITION);
-            return position;
-        }
-        return position;
-    }
-
-    private static Position moveDownwards(Position position) {
-        if (position.getY() < GRID_LIMIT) {
-            position.setY(position.getY() - ADD_ONE_GRID_POSITION);
-            return position;
-        }
-        return position;
-    }
-
-    private static Position moveLeft(Position position) {
-        if (position.getX() < GRID_LIMIT) {
-            position.setX(position.getX() - ADD_ONE_GRID_POSITION);
-            return position;
-        }
-        return position;
+        return Objects.equals(obstacle.position().getX(), position.getX()) && Objects.equals(obstacle.position().getY(), position.getY());
     }
 
     public void rotateToRight(Position position) {
